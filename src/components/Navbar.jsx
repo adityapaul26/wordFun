@@ -5,13 +5,12 @@ export const Navbar = () => {
     <>
       <nav className="bg-gray-900 text-white px-20 py-4 text-3xl flex items-center justify-between">
         
-        <div className="font-bold">Wordle</div>
-
+        <div className="font-bold">MyWordGuessGame</div>
         
         <ul className="flex">
           <li>
             <a
-              href="https://github.com"
+              href="https://github.com/adityapaul26/wordle-clone"
               target="_blank"
               className="hover:text-gray-400"
             >
