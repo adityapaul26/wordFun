@@ -5,7 +5,7 @@ export const Navbar = () => {
     <>
       <nav className="bg-gray-900 text-white px-20 py-4 text-3xl flex items-center justify-between">
         
-        <div className="font-bold">MyWordGuessGame</div>
+        <div className="font-bold">WordFun</div>
         
         <ul className="flex">
           <li>
