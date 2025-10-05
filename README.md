@@ -27,7 +27,9 @@ After each guess, the letters change colors to indicate how close your guess was
 ### 🚀 Tech Stack
 
 Frontend: React, Vite
+
 Styling: Tailwind CSS
+
 Language: JavaScript (ES6)
 
 ### 🖥️ Installation & Setup
