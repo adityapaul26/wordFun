@@ -1,4 +1,3 @@
-import React from "react";
 import { Row } from "./Row";
 
 export const Square = ({ guess }) => {
