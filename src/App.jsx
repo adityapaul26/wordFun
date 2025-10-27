@@ -41,8 +41,10 @@ function App() {
 
           if (localCorrectLetters === 5) {
             setWin(1);
+            return;
           } else if (countChance + 1 >= 6) {
             setWin(0);
+            return;
           }
 
           setCountChance((prev) => prev + 1);
@@ -62,18 +64,36 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentGuess]);
 
+  // Generate all rows (submitted guesses + current guess + empty rows)
+  const allRows = [];
+  for (let i = 0; i < 6; i++) {
+    if (i < guesses.length) {
+      // Submitted guess
+      allRows.push({ letters: guesses[i].letters, colors: guesses[i].colors });
+    } else if (i === guesses.length && win === null) {
+      // Current typing row (only if game ongoing)
+      allRows.push({
+        letters: currentGuess.concat(Array(5 - currentGuess.length).fill("")),
+        colors: Array(5).fill("bg-gray-200"),
+      });
+    } else {
+      // Empty row
+      allRows.push({
+        letters: Array(5).fill(""),
+        colors: Array(5).fill("bg-gray-200"),
+      });
+    }
+  }
+
   return (
     <>
       <Navbar />
       <div className="p-4 mx-auto w-80 my-30">
-        {/* Past guesses */}
-        <Square guess={guesses} />
-
-        {/* Current typing row */}
-        <Row
-          letters={currentGuess.concat(Array(5 - currentGuess.length).fill(""))}
-          colors={Array(5).fill("bg-gray-200")}
-        />
+        {/* All 6 rows */}
+        {allRows.map((row, i) => (
+          <Row key={i} letters={row.letters} colors={row.colors} />
+        ))}
+        
         {win === 1 && (
           <div className="text-green-500 text-3xl">You Win! 🎉</div>
         )}
